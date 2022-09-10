@@ -1,1 +1,1 @@
-web: gunicorn flutterfinalprojects.wsgi
+web: gunicorn flutterfinalprojects.wsgi --log-file -
