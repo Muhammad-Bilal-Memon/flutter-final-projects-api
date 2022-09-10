@@ -1,1 +1,1 @@
-web: gunicorn flutterfinalprojects.wsgi.application
+web: gunicorn flutterfinalprojects.wsgi
