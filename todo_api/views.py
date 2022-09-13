@@ -6,12 +6,12 @@ from .serializers import allDataSerializer
 
 
 class FavouriteShow(APIView):
-    def get(self, request):
+    def get(self, request, *args, **kwargs):
         data = allData.objects.values()
         serializer = allDataSerializer(data, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
-    def post(self, request):
+    def post(self, request, *args, **kwargs):
         data = {
             'title': request.data.get('title'),
             'price': request.data.get('price'),
@@ -34,7 +34,7 @@ class FavouriteChange(APIView):
             return None
 
     # 3. Retrieve
-    def get(self, request, todo_id):
+    def get(self, request, todo_id, *args, **kwargs):
         todo_instance = allData.objects.get(id=todo_id)
         if not todo_instance:
             return Response(
@@ -46,7 +46,7 @@ class FavouriteChange(APIView):
         return Response(serializer.data, status=status.HTTP_200_OK)
 
     # 4. Update
-    def put(self, request, todo_id):
+    def put(self, request, todo_id, *args, **kwargs):
         todo_instance = self.get_object(todo_id)
         if not todo_instance:
             return Response(
@@ -67,7 +67,7 @@ class FavouriteChange(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     # 5. Delete
-    def delete(self, todo_id):
+    def delete(self, todo_id, *args, **kwargs):
         todo_instance = self.get_object(todo_id)
         if not todo_instance:
             return Response(
