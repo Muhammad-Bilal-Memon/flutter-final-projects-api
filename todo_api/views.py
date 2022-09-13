@@ -6,7 +6,7 @@ from .serializers import allDataSerializer
 
 
 class FavouriteShow(APIView):
-    def get(self,request):
+    def get(self, request):
         data = allData.objects.values()
         serializer = allDataSerializer(data, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
@@ -34,7 +34,7 @@ class FavouriteChange(APIView):
             return None
 
     # 3. Retrieve
-    def get(self,request, todo_id):
+    def get(self, request, todo_id):
         todo_instance = allData.objects.get(id=todo_id)
         if not todo_instance:
             return Response(
